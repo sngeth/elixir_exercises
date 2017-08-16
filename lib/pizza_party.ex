@@ -23,18 +23,26 @@ defmodule PizzaParty do
   end
 
   defp get_num_people do
-    { people, _ }  = IO.gets("How many people? ")
-                          |> String.strip
-                          |> Integer.parse
+    input = IO.gets("How many people? ")
+            |> String.strip
 
-    people
+    case Integer.parse(input) do
+      { people, _ } ->
+        people
+      :error ->
+        raise ArgumentError, message: "Invalid number"
+    end
   end
 
   defp get_num_pizzas do
-    { pizzas, _ }  = IO.gets("How many pizzas do you have? ")
-                          |> String.strip
-                          |> Integer.parse
+    input = IO.gets("How many pizzas do you have? ")
+            |> String.strip
 
-    pizzas
+    case Integer.parse(input) do
+      { pizzas , _ } ->
+        pizzas
+      :error ->
+        raise ArgumentError, message: "Invalid number"
+    end
   end
 end
