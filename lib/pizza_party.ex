@@ -18,8 +18,17 @@ defmodule PizzaParty do
     leftovers = rem(num_slices, num_people)
 
     IO.puts "#{num_people} people with #{num_pizzas} pizzas"
-    IO.puts "Each person gets #{num_slices_each} slices of pizza."
+    IO.puts "Each person gets #{num_slices_each} #{piece_or_pieces(num_slices_each)} of pizza."
     IO.puts "There are #{leftovers} leftover pieces."
+  end
+
+  defp piece_or_pieces(num) do
+    cond do
+      num == 1 ->
+        "piece"
+      num > 1 ->
+        "pieces"
+    end
   end
 
   defp get_num_people do
