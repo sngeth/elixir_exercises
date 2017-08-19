@@ -11,8 +11,8 @@ defmodule PizzaParty do
   @slices_in_pie 8
 
   def calc do
-    num_people = get_num_people()
-    num_pizzas = get_num_pizzas()
+    num_people = get_numeric_input("How many people? ")
+    num_pizzas = get_numeric_input("How many pizzas do you have? ")
     num_slices = num_pizzas * @slices_in_pie
     num_slices_each = div(num_slices, num_people)
     leftovers = rem(num_slices, num_people)
@@ -31,25 +31,13 @@ defmodule PizzaParty do
     end
   end
 
-  defp get_num_people do
-    input = IO.gets("How many people? ")
+  defp get_numeric_input(question) do
+    input = IO.gets(question)
             |> String.strip
 
     case Integer.parse(input) do
-      { people, _ } ->
-        people
-      :error ->
-        raise ArgumentError, message: "Invalid number"
-    end
-  end
-
-  defp get_num_pizzas do
-    input = IO.gets("How many pizzas do you have? ")
-            |> String.strip
-
-    case Integer.parse(input) do
-      { pizzas , _ } ->
-        pizzas
+      { input, _ } ->
+        input
       :error ->
         raise ArgumentError, message: "Invalid number"
     end
