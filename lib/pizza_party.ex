@@ -1,3 +1,5 @@
+import Input
+
 defmodule PizzaParty do
   @moduledoc """
   Prompt for the number of people, the number of pizzas, and the number of
@@ -28,18 +30,6 @@ defmodule PizzaParty do
         "piece"
       num > 1 ->
         "pieces"
-    end
-  end
-
-  defp get_numeric_input(question) do
-    input = IO.gets(question)
-            |> String.strip
-
-    case Integer.parse(input) do
-      { input, _ } ->
-        input
-      :error ->
-        raise ArgumentError, message: "Invalid number"
     end
   end
 end

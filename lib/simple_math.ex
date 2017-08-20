@@ -1,4 +1,4 @@
-require IEx
+import Input
 
 defmodule SimpleMath do
   @moduledoc """
@@ -23,13 +23,8 @@ defmodule SimpleMath do
        10 / 5 = 2
   """
   def calculate do
-    { first, _ }  = IO.gets("What is the first number? ")
-                    |> String.strip
-                    |> Integer.parse
-
-    { second, _ } = IO.gets("What is the second number? ")
-                    |> String.strip
-                    |> Integer.parse
+    first = get_numeric_input("What is the first number? ")
+    second = get_numeric_input("What is the second number? ")
 
     add(first, second)
     subtract(first, second)

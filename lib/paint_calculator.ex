@@ -1,3 +1,5 @@
+import Input
+
 defmodule PaintCalculator do
   @moduledoc """
   Calculate gallons of paint needed to paint the ceiling of a room. Prompts for
@@ -12,8 +14,8 @@ defmodule PaintCalculator do
   @gals_per_sq_ft 350
 
   def calc do
-    length = get_length()
-    width = get_width()
+    length = get_numeric_input("What is the length of the room? ")
+    width = get_numeric_input("What is the area of the room? ")
     sq_ft = length * width
     required = calc_required_gallons(sq_ft)
 
@@ -22,29 +24,5 @@ defmodule PaintCalculator do
 
   defp calc_required_gallons(sq_ft) do
     Float.ceil(sq_ft / @gals_per_sq_ft) |> round
-  end
-
-  defp get_length do
-    input = IO.gets("What is the length of the room? ")
-            |> String.strip
-
-    case Integer.parse(input) do
-      { length, _ } ->
-        length
-      :error ->
-        raise ArgumentError, message: "Invalid number"
-    end
-  end
-
-  defp get_width do
-    input = IO.gets("What is the width of the room? ")
-            |> String.strip
-
-    case Integer.parse(input) do
-      { width, _ } ->
-        width
-      :error ->
-        raise ArgumentError, message: "Invalid number"
-    end
   end
 end
