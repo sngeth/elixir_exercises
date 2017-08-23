@@ -16,13 +16,13 @@ defmodule SelfCheckout do
     _calc(1, 0.0)
   end
 
-  def _calc(n, subtotal) when n > 3 do
+  defp _calc(n, subtotal) when n > 3 do
     IO.puts "Subtotal: #{subtotal}"
     tax = calc_tax(subtotal)
     calc_total(subtotal, tax)
   end
 
-  def _calc(n, subtotal) do
+  defp _calc(n, subtotal) do
     subtotal = subtotal + calc_line_item_subtotal(n)
     _calc(n+1, subtotal)
   end
