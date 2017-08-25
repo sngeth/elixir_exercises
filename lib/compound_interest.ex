@@ -1,4 +1,3 @@
-require IEx
 import Input
 alias Decimal, as: D
 

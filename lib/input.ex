@@ -1,6 +1,10 @@
 defmodule Input do
+  def get_string_input(str) do
+    IO.gets(str) |> String.trim
+  end
+
   def get_numeric_input(str) do
-    input = IO.gets(str) |> String.trim
+    input = get_string_input(str)
 
     case Integer.parse(input) do
       { parsed_input , _ } ->
@@ -11,7 +15,7 @@ defmodule Input do
   end
 
   def get_float_input(str) do
-    input = IO.gets(str) |> String.trim
+    input = get_string_input(str)
 
     case Float.parse(input) do
       { parsed_input , _ } ->
