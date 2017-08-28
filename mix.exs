@@ -28,6 +28,10 @@ defmodule ElixirExercises.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:decimal, "~> 1.0"}]
+    [
+      {:decimal, "~> 1.0"},
+      {:comeonin, "~> 4.0"},
+      {:bcrypt_elixir, "~> 0.12"}
+    ]
   end
 end
