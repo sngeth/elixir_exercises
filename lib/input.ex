@@ -24,4 +24,15 @@ defmodule Input do
         raise ArgumentError, message: "Invalid number"
     end
   end
+
+  def get_gender_input(str) do
+    input = get_string_input(str) |> String.upcase
+
+    case input do
+      "M" -> "male"
+      "F" -> "female"
+      _ ->
+        get_gender_input("Invalid gender, enter m or f: ")
+    end
+  end
 end
