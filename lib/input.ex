@@ -10,7 +10,7 @@ defmodule Input do
       { parsed_input , _ } ->
         parsed_input
       :error ->
-        raise ArgumentError, message: "Invalid number"
+        get_numeric_input("Invalid number, try again: ")
     end
   end
 
