@@ -35,4 +35,14 @@ defmodule Input do
         get_gender_input("Invalid gender, enter m or f: ")
     end
   end
+
+  def get_y_or_n_input(str) do
+    input = get_string_input(str) |> String.upcase
+
+    if (input != "Y" && input != "N") do
+      get_y_or_n_input("Invalid input, enter y or n: ")
+    else
+      input
+    end
+  end
 end
