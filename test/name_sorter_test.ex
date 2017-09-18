@@ -1,16 +1,14 @@
 defmodule NameSorterTest do
   use ExUnit.Case
   import NameSorter
-  import ExUnit.CaptureIO
 
   test "sorts a list of names" do
     names = "Ling, Mai\nJohnson, Jim\nZarnecki, Sabrina\nJones, Chris\nJones, Aaron\nSwift, Geoffrey\nXiong, Fong\n"
 
-    fun = fn ->
-      handle_names(names)
-    end
+    handle_names(names)
+    |> write_names
 
-    assert capture_io(fun) == """
+    assert File.read!('./names_sorted.txt') == """
     Total of 7 names
     -------------------------------
     Johnson, Jim

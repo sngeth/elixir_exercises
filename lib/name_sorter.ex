@@ -14,22 +14,33 @@ defmodule NameSorter do
   to a file that looks like the following example output.
   """
 
-  def print_sorted_names do
+  def run do
+    read_names()
+    |> handle_names()
+    |> write_names()
+  end
+
+  def read_names do
     file = Path.expand('./names.txt')
 
     case File.read(file) do
-      {:ok, body}      -> handle_names(body)
+      {:ok, names}     -> names
       {:error, reason} -> IO.puts("There was an error: #{reason}")
     end
   end
 
   def handle_names(names) do
-    names = String.split(names, "\n")
-            |> Enum.reject(&(&1 == ""))
-            |> Enum.sort
+    String.split(names, "\n")
+    |> Enum.reject(&(&1 == ""))
+    |> Enum.sort
+  end
 
-    IO.puts "Total of #{length(names)} names"
-    IO.puts "-------------------------------"
-    IO.puts names |> Enum.join("\n")
+  def write_names(names) do
+    file_path = Path.expand('./names_sorted.txt')
+    file = File.open!(file_path, [:write])
+
+    IO.puts(file, "Total of #{length(names)} names")
+    IO.puts(file, "-------------------------------")
+    IO.puts(file, names |> Enum.join("\n"))
   end
 end
