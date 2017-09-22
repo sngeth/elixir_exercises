@@ -33,7 +33,8 @@ defmodule ElixirExercises.Mixfile do
       {:decimal, "~> 1.0"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 0.12"},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:httpoison, "~> 0.13"}
     ]
   end
 end
